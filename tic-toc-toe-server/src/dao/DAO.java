@@ -15,9 +15,9 @@ public class DAO {
     protected Connection con;
 
     public DAO() {
-        String jdbcURL = "jdbc:mysql://localhost:3306/caro_machine";
+        String jdbcURL = "jdbc:mysql://localhost:3306/tic-toc-toe";
         String jdbcUsername = "root";
-        String jdbcPassword = ""; //please change information to connect to DB
+        String jdbcPassword = "123456"; //please change information to connect to DB
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);

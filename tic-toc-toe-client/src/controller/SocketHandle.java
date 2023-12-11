@@ -123,12 +123,6 @@ public class SocketHandle implements Runnable {
                         Client.homePageFrm.addMessage(messageSplit[1]);
                     }
                 }
-                //Xử lý hiển thị thông tin đối thủ là bạn bè/không
-                if(messageSplit[0].equals("check-friend-response")){
-                    if(Client.competitorInfoFrm!=null){
-                        Client.competitorInfoFrm.checkFriend((messageSplit[1].equals("1")));
-                    }
-                }
                 //Xử lý kết quả tìm phòng từ server
                 if(messageSplit[0].equals("room-fully")){
                     Client.closeAllViews();
@@ -147,12 +141,7 @@ public class SocketHandle implements Runnable {
                     Client.openView(Client.View.HOMEPAGE);
                     JOptionPane.showMessageDialog(Client.homePageFrm, "Mật khẩu phòng sai");
                 }
-                //Xử lý xem rank
-                if(messageSplit[0].equals("return-get-rank-charts")){
-                    if(Client.rankFrm!=null){
-                        Client.rankFrm.setDataToTable(getListRank(messageSplit));
-                    }
-                }
+
                 //Xử lý lấy danh sách phòng
                 if(messageSplit[0].equals("room-list")){
                     Vector<String> rooms = new Vector<>();
@@ -162,11 +151,6 @@ public class SocketHandle implements Runnable {
                         passwords.add(messageSplit[i+1]);
                     }
                     Client.roomListFrm.updateRoomList(rooms,passwords);
-                }
-                if(messageSplit[0].equals("return-friend-list")){
-                    if(Client.friendListFrm!=null){
-                        Client.friendListFrm.updateFriendList(getListUser(messageSplit));
-                    }
                 }
                 if(messageSplit[0].equals("go-to-room")){
                     System.out.println("Vào phòng");
